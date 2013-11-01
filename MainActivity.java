@@ -41,7 +41,8 @@ public class MainActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainactivity);
-        
+        L= new ReportList(getApplicationContext());
+        MainActivity.L.populate();
         //get  component view
         btnaddreport = (Button) findViewById(R.id.btnaddreport);
         btnviewreport = (Button)findViewById(R.id.btnviewreport);
@@ -52,6 +53,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(getApplicationContext(), AddReportActivity.class);
 		        MainActivity.this.startActivity(intent);
+		        MainActivity.L.populate();
 			}
         });
         
