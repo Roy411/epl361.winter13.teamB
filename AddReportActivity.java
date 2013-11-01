@@ -26,6 +26,7 @@ import com.example.energospolitis.db.DatabaseHandler;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -75,14 +76,13 @@ public class AddReportActivity extends Activity implements OnItemSelectedListene
 				// open database handler to add report to database **SEE DB HANDLER CLASS**
 				DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 				Log.d("ID", ID);
-				if(cat==-1) {
-					return;
-				}
+
 				Report r = new Report(0,cat,"30/10/2013","Location","User","N",1,1,Desc.getText().toString());
 				
 				db.addReport(r);
 				db.close();
-				MainActivity.L.populate();
+				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+		        AddReportActivity.this.startActivity(intent);
 			}
 			//** NOT IMPLEMENTED YET **//
 			private void getId() {
@@ -122,7 +122,7 @@ public class AddReportActivity extends Activity implements OnItemSelectedListene
 	 */
 	public void onNothingSelected(AdapterView<?> parent) {
      category="";
-     cat=-1;
+    // cat=-1;
  }
      
 	}
