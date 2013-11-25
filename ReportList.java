@@ -14,18 +14,24 @@
  *  **/
 
 /**
- * @version 0.1
+ * @version 0.2
  * 
  */
 package com.example.energospolitis.classes;
 
+import android.R;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.widget.ArrayAdapter;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.energospolitis.ReportListFragment;
 import com.example.energospolitis.db.DatabaseHandler;
 
 @SuppressLint("UseSparseArrays")
@@ -36,23 +42,61 @@ import com.example.energospolitis.db.DatabaseHandler;
  */
 public class ReportList {
 	private static Context context;
-	
-	// Populate list with reports with the database. Note that this line may not be necessary when communicating with a remote server. 
-	public ReportList(Context context){ this.context=context; populate();}
-	
-    public static List<Report> ITEMS  = new ArrayList<Report>();
 
-    // Map reports with their Codes. 
-    public static Map<Integer, Report>  ITEM_MAP= new HashMap<Integer, Report>();
-      
-    /**
-     * Populate the list from database
-     */
-	public void populate() {
-		// TODO Auto-generated method stub
-		DatabaseHandler db = new DatabaseHandler(context); 
-		ITEMS = db.getAllReports();
-	    for(Report r : ITEMS){ ITEM_MAP.put(r.getCode(), r);}
+	// Populate list with reports with the database. Note that this line may not
+	// be necessary when communicating with a remote server.
+	public ReportList(Context context) {
+		this.context = context;
+		populate();
 	}
 
+	public static List<Report> ITEMS = new ArrayList<Report>();
+
+	// Map reports with their Codes.
+	public static Map<Integer, Report> ITEM_MAP = new HashMap<Integer, Report>();
+
+	/**
+	 * Populate the list from database
+	 */
+	public void populate() {
+		// TODO Auto-generated method stub
+		DatabaseHandler db = new DatabaseHandler(context);
+		List<Report> item = new ArrayList<Report>();
+		item = db.getAllReports();
+		ITEMS.clear();
+		for (Report r : item) {
+			ITEM_MAP.put(r.getCode(), r);
+			ITEMS.add(0, r);
+		}
+	}
+
+	public static void sort(String string) {
+		// TODO Auto-generated method stub
+		if (string.compareToIgnoreCase("type") == 0) {
+			Collections.sort(ITEMS, new Comparator<Report>() {
+				public int compare(Report obj1, Report obj2) {
+					// TODO Auto-generated method stub
+					return (obj1.getType() < obj2.getType()) ? -1 : (obj1
+							.getType() > obj2.getType()) ? 1 : 0;
+				}
+			});
+		}
+		if (string.compareToIgnoreCase("rate") == 0) {
+			Collections.sort(ITEMS, new Comparator<Report>() {
+				public int compare(Report obj1, Report obj2) {
+					// TODO Auto-generated method stub
+					return (obj1.getRating() > obj2.getRating()) ? -1: (obj1.getRating() > obj2.getRating()) ? 1:0 ;
+				}
+			});
+			
+		}
+		if (string.compareToIgnoreCase("recent") == 0) {
+			Collections.sort(ITEMS, new Comparator<Report>() {
+				public int compare(Report obj1, Report obj2) {
+					// TODO Auto-generated method stub
+					return (obj1.getCode() > obj2.getCode()) ? -1: (obj1.getCode() > obj2.getCode()) ? 1:0 ;
+				}
+			});
+		}
+	}
 }
