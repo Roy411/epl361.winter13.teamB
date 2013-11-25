@@ -14,7 +14,7 @@
  *  **/
 
 /**
- * @version 0.1
+ * @version 0.2
  * 
  */
 package com.example.energospolitis;
@@ -55,10 +55,12 @@ public class ReportListFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+		
         setListAdapter(new ArrayAdapter<Report>(getActivity(),
                 R.layout.simple_list_item_activated_1,
                 R.id.text1,
                 ReportList.ITEMS));
+        
     }
 
     @Override
@@ -115,4 +117,7 @@ public class ReportListFragment extends ListFragment {
 
         mActivatedPosition = position;
     }
+
+
+
 }
