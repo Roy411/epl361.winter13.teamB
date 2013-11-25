@@ -24,6 +24,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 
+
 /**
  * 
  * @author Andreas 
@@ -49,6 +50,8 @@ public class ReportDetailActivity extends FragmentActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.report_detail_container, fragment).commit();
 		}
+		
+
 	}
 
 	@Override
