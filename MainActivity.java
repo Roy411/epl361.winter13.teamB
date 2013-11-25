@@ -13,7 +13,7 @@
  * limitations under the License. **/
 
 /**
- * @version 0.1
+ * @version 0.2
  * 
  */
 package com.example.energospolitis;
@@ -22,8 +22,11 @@ import com.example.energospolitis.classes.ReportList;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 
 
@@ -38,22 +41,24 @@ public class MainActivity extends Activity {
 	private Button btnaddreport,btnviewreport;
 	static ReportList L;
 	public void onCreate(Bundle savedInstanceState) {
-
+		
+		Typeface fonttype=Typeface.createFromAsset(getAssets(),"font/FTLTLT.TTF");
+		
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainactivity);
         L= new ReportList(getApplicationContext());
-        MainActivity.L.populate();
         //get  component view
         btnaddreport = (Button) findViewById(R.id.btnaddreport);
         btnviewreport = (Button)findViewById(R.id.btnviewreport);
-        
-        
+        btnaddreport.setTypeface(fonttype);
+        btnviewreport.setTypeface(fonttype);
         
         btnaddreport.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
+				MainActivity.L.populate();
 				Intent intent = new Intent(getApplicationContext(), AddReportActivity.class);
 		        MainActivity.this.startActivity(intent);
-		        MainActivity.L.populate();
+		        
 			}
         });
         
