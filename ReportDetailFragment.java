@@ -13,12 +13,13 @@
  * limitations under the License. **/
 
 /**
- * @version 0.1
+ * @version 0.2
  * 
  */
 package com.example.energospolitis;
 
 import com.example.energospolitis.classes.Report;
+import com.example.energospolitis.classes.ReportCategory;
 import com.example.energospolitis.classes.ReportList;
 import com.example.energospolitis.db.DatabaseHandler;
 
@@ -65,7 +66,7 @@ public class ReportDetailFragment extends Fragment {
         	// Declare components
             ((TextView) rootView.findViewById(R.id.fr_date)).setText("Ημ. : "+mItem.getDate().toString());
             ((TextView) rootView.findViewById(R.id.fr_location)).setText("Τοποθεσία: "+mItem.getLocation());
-            ((TextView) rootView.findViewById(R.id.fr_type)).setText("Τύπος: "+ Integer.toString(mItem.getType()));
+            ((TextView) rootView.findViewById(R.id.fr_type)).setText("Τύπος: "+ ReportCategory.Cats.get((mItem.getType())).getName());
             ((TextView) rootView.findViewById(R.id.fr_desc)).setText("Περιγραφή: \n"+ mItem.getDesc());
             ((TextView) rootView.findViewById(R.id.fr_confirmed)).setText("Επικυρώθηκε: "+Integer.toString(mItem.getConfirmed()));
             
