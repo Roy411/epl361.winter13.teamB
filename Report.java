@@ -14,7 +14,7 @@
  *  **/
 
 /**
- * @version 0.1
+ * @version 0.2
  * 
  */
 package com.example.energospolitis.classes;
@@ -49,6 +49,7 @@ public class Report {
 		this.confirmed = confirmed;
 		this.rating = rating;
 		this.desc = desc;
+		this.type=type;
 
 	}
 
@@ -150,7 +151,7 @@ public class Report {
 	 * @return the rating
 	 */
 	public int getRating() {
-		return rating;
+		return confirmed;
 	}
 
 	/**
