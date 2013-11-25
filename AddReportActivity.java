@@ -13,7 +13,7 @@
  * limitations under the License. **/
 
 /**
- * @version 0.1
+ * @version 0.2
  * 
  */
 package com.example.energospolitis;
