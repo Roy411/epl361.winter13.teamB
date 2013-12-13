@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">EnergosPolitis</string>
+    <string name="title_report_detail">Report Detail</string>
+    <string name="title_report_list">Reports</string>
+
+</resources>
